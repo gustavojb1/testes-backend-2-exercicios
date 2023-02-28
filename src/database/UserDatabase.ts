@@ -1,3 +1,4 @@
+import { DeleteOutputDTO } from "../dtos/userDTO";
 import { UserDB } from "../types";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -25,5 +26,12 @@ export class UserDatabase extends BaseDatabase {
             .select()
         
         return result
+    }
+
+    public deleteUser = async (id : string): Promise<void>  => {
+        await BaseDatabase
+            .connection(UserDatabase.TABLE_USERS)
+            .del()
+        .where({ id });
     }
 }

@@ -1,5 +1,5 @@
 import { UserDatabase } from "../database/UserDatabase"
-import { GetAllOutputDTO, LoginInputDTO, LoginOutputDTO, SignupInputDTO, SignupOutputDTO } from "../dtos/userDTO";
+import { DeleteInputDTO, DeleteOutputDTO, GetAllOutputDTO, LoginInputDTO, LoginOutputDTO, SignupInputDTO, SignupOutputDTO } from "../dtos/userDTO";
 import { BadRequestError } from "../errors/BadRequestError";
 import { NotFoundError } from "../errors/NotFoundError";
 import { User } from "../models/User";
@@ -137,5 +137,24 @@ export class UserBusiness {
         })
 
         return output
+    }
+
+    public deleteUser = async (input: DeleteInputDTO): Promise<DeleteOutputDTO> => {
+
+        const { id, token } = input;
+
+        const payload = this.tokenManager.getPayload(token);
+
+        if (payload === null) {
+        throw new Error("token inválido");
+        }
+
+
+       await this.userDatabase.deleteUser(id);
+
+       const output={message:"Usuario deletado com sucesso"}
+
+        return output
+    
     }
 }
