@@ -150,11 +150,9 @@ export class UserBusiness {
         }
 
 
-       await this.userDatabase.deleteUser(id);
+            await this.userDatabase.deleteUser(id);
 
-       const output={message:"Usuario deletado com sucesso"}
-
-        return output
-    
+            const output={message:"Usuario deletado com sucesso"}
+            return output
     }
 }

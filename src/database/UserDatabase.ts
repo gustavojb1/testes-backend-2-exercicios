@@ -34,4 +34,5 @@ export class UserDatabase extends BaseDatabase {
             .del()
         .where({ id });
     }
+
 }

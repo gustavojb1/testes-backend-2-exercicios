@@ -19,3 +19,5 @@ VALUES
 	
 -- password = astrodev99
     ("u003", "Astrodev", "astrodev@email.com", "$2a$12$C.Uu/8ikb.1gBaG.AN8q6OL2/Tyc1yp67IWFELO8IIhflV6TNum/K", "ADMIN");
+
+select * from users;
